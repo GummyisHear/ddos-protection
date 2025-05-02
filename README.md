@@ -48,6 +48,7 @@ If you have RDP set up on your VPS, uncomment this line and set your IP, so you 
 
 ### 3. netfilter-persistent
 You need this package installed, for your iptables rules to be saved after system restarts. <br>
+Don't do this if you haven't tested the rules yet. You might want the rules to get deleted when you reboot the machine if something goes wrong.<br>
 ```bash
 sudo apt install netfilter-perstent
 ```
