@@ -54,8 +54,18 @@ sudo apt install netfilter-perstent
 ```
 To save rules simply run:
 ```bash
-netfilter-persistent save
-netfilter-persistent reload
+sudo netfilter-persistent save
+sudo netfilter-persistent reload
+```
+
+## How to Run
+Download the file and grant permissions to it.
+```bash
+sudo chmod +x ./firewall.sh
+```
+Then simply run it
+```bash
+sudo ./firewall.sh
 ```
 
 
