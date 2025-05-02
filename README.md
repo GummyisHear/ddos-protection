@@ -4,38 +4,49 @@ Firstly, I do not claim to be good at firewalls, DDoS protection or networking i
 But I wrote a decent set of rules which worked for DoM.
 
 ## Prerequisites:
+* Know how to program in as3 for client changes
 * Know how to use a Linux VPS (I used Ubuntu)
 * Know a little bit of bash scripting
 * Know how to use ChatGPT for troubleshooting lol
 
-## Basic DDoS Attack Types
-### 1) SYN Packet Spam
-SYN packet spam is a type of network attack where an attacker sends a large number of fake SYN requests to a server. These requests are used to start a connection, but the attacker never completes the process. This causes the server to keep resources waiting for a reply that never comes, which can slow down or crash the server. <br>
-Usually, the packets in this type of attack are spoofed to look like SYN packets, but they lack the proper flags that legitimate SYN packets should have.<br>
-This makes filtering them easy.
+# IMPORTANT! Client Changes
+This script simply won't work for you if you don't do these changes. <br>
+<br>
+This script rate-limits incoming packets at a rate of 30/second. This rate is VERY low for a normal private server. <br>
+From my tests, you can easily achieve 600 packets/sec with high dex and multiple enemies on screen. <br>
+You have to rewrite the following packets:
+* PlayerShoot
+* PlayerHit
+* EnemyHit
+* Any other hits you may have (minions? static objects)
 
-### 2) TCP_PSH,TCP_ACK Attack
-The TCP_PSH, TCP_ACK attack is a type of TCP flood DDoS attack that involves a large number of packets with the PSH (Push) and ACK (Acknowledgment) flags set. <br>
-TCP_PSH, TCP_ACK are legitimate flags in a normal TCP session. <br>
-In this attack, the attacker sends a high volume of TCP packets with these flags without a valid connection. <br>
-These packets appear to be part of an ongoing connection, which can bypass simple SYN filters (because they aren’t SYN packets). <br>
+UNFINISHED.
 
-## Basic Principles
-
-### Rate Limiting
-Rate limiting is a technique used to control how many requests or packets a user or system can send within a certain time frame. <br>
-It helps prevent abuse, overload, or attacks like DDoS by temporarily blocking or slowing down excessive traffic.
-
-### Connection Tracking
-Connection tracking monitors active connections to determine whether incoming packets are part of an established connection or a new one. <br>
-This allows the firewall to apply different rules to new vs. existing connections.
-
-# dom-whitelist.sh
+# firewall.sh
 Make sure your VPS has iptables turned on and other firewalls turned off (like ufw).<br>
 <br>
-The first few comment lines in the script can be entirely ignored, since they only apply to DoM.<br>
-But here's a small explanation of what we do with this:<br>
+## Before Running
+
+### 1. Ports
+This script whitelists 2 ports: 2050 and 2051, for wServer and appEngine respectively. <br>
+You have to change them to the ports that your server is using. <br>
+
+### 2. RDP Port
+If you have RDP set up on your VPS, uncomment this line and set your IP, so you don't get disconnected after running this.
 ```bash
-# Before running this script:
-ipset create dom_whitelist hash:ip hashsize 65536 maxelem 65536
+#iptables -A INPUT -p tcp --dport 3389 -s <YOUR IP> -j ACCEPT # RDP
 ```
+
+### 3. netfilter-persistent
+You need this package installed, for your iptables rules to be saved after system restarts. <br>
+```bash
+sudo apt install netfilter-perstent
+```
+To save rules simply run:
+```bash
+netfilter-persistent save
+netfilter-persistent reload
+```
+
+## Explanations
+
