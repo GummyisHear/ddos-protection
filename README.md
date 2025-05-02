@@ -8,7 +8,6 @@ But I wrote a decent set of rules which worked for DoM.
 * Know how packets work on your server
 * Know how to use a Linux VPS (I used Ubuntu)
 * Know a little bit of bash scripting
-* Know how to use ChatGPT for troubleshooting lol
 
 # IMPORTANT! Client Changes
 This script simply won't work for you if you don't do these changes. <br>
