@@ -13,7 +13,7 @@ But I wrote a decent set of rules which worked for DoM.
 This script simply won't work for you if you don't do these changes. <br>
 
 ## The Problem
-This script rate-limits incoming packets at a rate of 30/second. This rate is VERY low for a standard private server. <br>
+This script rate-limits incoming packets at a rate of 40/second. This rate is VERY low for a standard private server. <br>
 From my tests, you can easily achieve 600 packets/sec with high dex and multiple enemies on screen. <br>
 All because every time a player shoots, hits an enemy, etc the packets are sent to server instantly. You might think this is good because there won't be a delay... <br>
 But in reality the server doesn't process them instantly, instead they are all queued and processed on next server tick (how it should be). <br>
