@@ -35,13 +35,13 @@ You have to rewrite the following packets:
 * Make sure your VPS has iptables turned on and other firewalls turned off (like ufw).
 * Remove any existing rules you may have in iptables before running this. (I explain how to do that at the bottom of the script)
 * This script only covers IPv4, if your system has IPv6 enabled, you might want to disable it or write a script using ip6tables.
-* Ensure that Redis is not bound to 0.0.0.0 in its config (bind 127.0.0.1)
+* Ensure that Redis is not bound to `0.0.0.0` in its config (bind `127.0.0.1`)
 <br/>
 
 ## Before Running
 
 ### 1. Ports
-This script whitelists 2 ports: 2050 and 2051, for wServer and appEngine respectively. <br/>
+This script whitelists 2 ports: `2050` and `2051`, for wServer and appEngine respectively. <br/>
 You have to change them to the ports that your server is using. <br/>
 
 ### 2. RDP Port
@@ -85,7 +85,7 @@ But that would effectively only restrict yourself in what actions you can do on 
 
 ## Whitelist IPs Using ipset
 You can have a system which whitelists specific IP addresses, and only those would be allowed to connect to the game server. <br/>
-This repository has an additional script ipset.sh which explains how to do something like that efficiently.
+This repository has an additional script `ipset.sh` which explains how to do something like that efficiently.
 
 ## OVH Edge Network Firewall
 If you are an OVH customer, you can add some rules to your server which will filter packets before they even reach your server. <br/>
