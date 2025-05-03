@@ -5,6 +5,7 @@
 iptables -A INPUT -i lo -j ACCEPT  # Accept all Localhost incoming packets
 iptables -A INPUT -p tcp --dport 22 -j ACCEPT  # Accept SSH Port packets
 iptables -A INPUT -p tcp ! --syn -m conntrack --ctstate NEW -j DROP # Drop spoofed SYN packets, SYN spam protection
+iptables -A INPUT -p udp -j DROP # drop all UDP packets, if you need udp for something then move this rule
 iptables -A INPUT \ # 1 minute ban for triggering Rate-Limit
   -m recent --rcheck --seconds 60 --hitcount 1 --name dom_firewall_ban --rsource \
   -j DROP
