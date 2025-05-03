@@ -97,7 +97,8 @@ To access the firewall, go to your Dashboard, click on your server. Then:
 <br/>
 This is the setup that I use: <br/>
 
-![image](https://github.com/user-attachments/assets/a6ce1883-a521-48d2-af2d-6415cc37da6a)
+![image](https://github.com/user-attachments/assets/7126be05-d6bf-4dd1-98d5-112a42d24e08)
+
 
 <br/>
 This firewall doesn't let you do anything advanced unfortunately, so you are basically only accepting specifics ports, and blocking everything else.<br/>
