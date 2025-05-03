@@ -21,7 +21,7 @@ Sending 600 packets every second is also incredibly innefficient, because every 
 And the final problem, rate-limiting becomes near impossible with this kind of instability. A normal player may send 600 packets, and the DDoSer may send 600. <br/>
 <br/>
 ## The Fix
-Rewrite packets which are sent to server a lot, to instead be queued on client and only sent when client receives NewTick packet. <br/>
+Rewrite packets which are sent to server very frequently, to instead be queued on client and only sent when client receives NewTick packet. <br/>
 This way you are sending one large packet every server tick instead of hundres of small ones. <br/>
 <br/>
 You have to rewrite the following packets:
