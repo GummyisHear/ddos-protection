@@ -99,7 +99,9 @@ To access the firewall, go to your Dashboard, click on your server. Then:
 * Click "Edge Network Firewall configuration"
 <br>
 This is the setup that I use: <br>
-![screenshot](https://github.com/user-attachments/assets/a6ce1883-a521-48d2-af2d-6415cc37da6a)
+
+![image](https://github.com/user-attachments/assets/a6ce1883-a521-48d2-af2d-6415cc37da6a)
+
 <br>
 This firewall doesn't let you do anything advanced unfortunately, so you are basically only accepting specifics ports, and blocking everything else.<br>
 By default this Firewall is off, and only gets turned on when OVH detects a DDoS attack on your server. I have it always turned on.<br>
