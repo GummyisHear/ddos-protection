@@ -36,7 +36,8 @@ You have to rewrite the following packets:
 * Remove any existing rules you may have in iptables before running this. (I explain how to do that at the bottom of the script)
 * This script only covers IPv4, if your system has IPv6 enabled, you might want to disable it or write a script using ip6tables.
 * Ensure that Redis is not bound to 0.0.0.0 in its config (bind 127.0.0.1)
-<br>
+<br/>
+
 ## Before Running
 
 ### 1. Ports
