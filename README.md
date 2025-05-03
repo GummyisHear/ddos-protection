@@ -74,10 +74,6 @@ sudo ./firewall.sh
 
 # Further Actions
 
-## Optional Enchancements
-* This script is not very optimized, there are rules which can be placed at the top of the script for better performance, like localhost accepting rule and established/related accepting rule
-* Logs can be abused, because writing to disk can slow down your system, but there's a limit of 5/minute so it should be fine
-
 ## Rate-Limit by Packet Size
 There is a commented set of rules in the script which rate-limits connections which send too much data in a short period of time. <br/>
 I haven't done enough testing with this to find good rate-limiting, and this is completely unnecessary currently. <br/>
