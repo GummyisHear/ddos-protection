@@ -1,7 +1,6 @@
 # Ports 2050, 2051 are wServer and appEngine respectively, change those to your servers ports.
 
 #iptables -A INPUT -p tcp --dport 3389 -s <YOUR IP> -j ACCEPT # RDP
-#iptables -A INPUT -p udp --dport 53 -j ACCEPT # DNS ... Possibly useless for a game server?
 iptables -A INPUT -i lo -j ACCEPT  # Accept all Localhost incoming packets
 iptables -A INPUT -p tcp --dport 22 -j ACCEPT  # Accept SSH Port packets
 iptables -A INPUT -p tcp ! --syn -m conntrack --ctstate NEW -j DROP # Drop spoofed SYN packets, SYN spam protection
