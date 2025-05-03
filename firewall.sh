@@ -36,7 +36,7 @@ iptables -A CHECK_LIMIT \ # max 40 packets/sec, burst value of 120, if packet co
   -m hashlimit --hashlimit 2400/minute --hashlimit-burst 120 \
   --hashlimit-mode srcip --hashlimit-name post_accept_rate \
   -j RETURN
-iptables -A CHECK_LIMIT -p tcp -m limit --limit 60/minute --limit-burst 60 -j LOG --log-prefix "CHECK Packet: " # just a log
+iptables -A CHECK_LIMIT -p tcp -m limit --limit 5/minute --limit-burst 10 -j LOG --log-prefix "CHECK Packet: " # just a log
 iptables -A CHECK_LIMIT \ # add ip to dom_firewall_ban, and send connection reset
   -m recent --set --name dom_firewall_ban --rsource \
   -p tcp -j REJECT --reject-with tcp-reset
@@ -56,7 +56,7 @@ iptables -A SYN_LIMIT -p tcp --syn -m hashlimit \
   --hashlimit 600/minute --hashlimit-burst 30 \
   --hashlimit-mode srcip --hashlimit-name synlimit \
   -j RETURN
-iptables -A SYN_LIMIT -p tcp -m limit --limit 60/minute --limit-burst 60 -j LOG --log-prefix "SYN Packet: "
+iptables -A SYN_LIMIT -p tcp -m limit --limit 5/minute --limit-burst 10 -j LOG --log-prefix "SYN Packet: "
 iptables -A SYN_LIMIT -p tcp --syn -j DROP
 iptables -I INPUT 2 -p tcp --syn -j SYN_LIMIT 
 
@@ -67,7 +67,7 @@ iptables -A TCP_LIMIT -p tcp -m hashlimit \
   --hashlimit 600/minute --hashlimit-burst 20 \
   --hashlimit-mode srcip --hashlimit-name tcplimit \
   -j RETURN
-iptables -A TCP_LIMIT -p tcp -m limit --limit 60/minute --limit-burst 60 -j LOG --log-prefix "TCP Packet: "
+iptables -A TCP_LIMIT -p tcp -m limit --limit 5/minute --limit-burst 10 -j LOG --log-prefix "TCP Packet: "
 iptables -A TCP_LIMIT -p tcp -j DROP
 iptables -I INPUT 3 -p tcp -m multiport --dports 843,443,22 -j TCP_LIMIT
 
