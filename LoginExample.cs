@@ -88,6 +88,9 @@ internal class LoginExample : RequestHandler
     }
     
     #region bash commands
+    // The actual rule that checks if ip exists in ipset would look like this:
+    // iptables -A INPUT -p tcp -m multiport --dports 2050,2051 -m set --match-set dom_whitelist src -j ACCEPT
+    
     private static void AddToWhitelist(string ip)
     {
         Logger.Info($"Adding IP {ip} to IP set...");
