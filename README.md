@@ -81,7 +81,7 @@ This repository has an additional script `ipset.sh` which explains how to do som
 ## Restrict wServer Connections
 With the use of ipsets, you can make port for wServer closed by default, and only accessed to whitelisted IPs. <br/>
 Inside of appEngine, every time someone logs into an account, you will add their IP to the whitelist, so they can connect to the game properly. <br/>
-This will make it so your wServer doesn't crash from the sheer amount of Clients it has to create. <br/>
+This will make it so your wServer doesn't crash from the sheer amount of Clients it creates during SYN Flood attacks. <br/>
 Check out the example file for how this system could look like: `LoginExample.cs` <br/>
 <br/>
 I recommend in addition to this, making a restriction, where one account can only have one IP whitelisted, to prevent abuse. <br/>
