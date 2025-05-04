@@ -86,7 +86,7 @@ Check out the example file for how this system could look like: `LoginExample.cs
 <br/>
 I recommend in addition to this, making a restriction, where one account can only have one IP whitelisted, to prevent abuse. <br/>
 I also recommend rate-limiting registering of accounts, for this system to be even stronger against abuse. <br/>
-And on unrelated note, if you haven't already, rate-limit logging into accounts, to prevent bruteforcing <br/>
+And on unrelated note, if you haven't already, rate-limit logging into accounts, to prevent bruteforcing. <br/>
 
 ## Rate-Limit by Packet Size
 There is a commented set of rules in the script which rate-limits connections which send too much data in a short period of time. <br/>
