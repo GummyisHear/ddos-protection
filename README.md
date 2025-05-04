@@ -74,6 +74,20 @@ sudo ./firewall.sh
 
 # Further Actions
 
+## Whitelist IPs Using ipset
+You can have a system which whitelists specific IP addresses, and only those would be allowed to connect to the game server. <br/>
+This repository has an additional script `ipset.sh` which explains how to do something like that efficiently.
+
+## Restrict wServer Connections
+With the use of ipsets, you can make port for wServer closed by default, and only accessed to whitelisted IPs. <br/>
+Inside of appEngine, every time someone logs into an account, you will add their IP to the whitelist, so they can connect to the game properly. <br/>
+This will make it so your wServer doesn't crash from the sheer amount of Clients it has to create. <br/>
+Check out the example file for how this system could look like: `LoginExample.cs` <br/>
+<br/>
+I recommend in addition to this, making a restriction, where one account can only have one IP whitelisted, to prevent abuse. <br/>
+I also recommend rate-limiting registering of accounts, for this system to be even stronger against abuse. <br/>
+And on unrelated note, if you haven't already, rate-limit logging into accounts, to prevent bruteforcing <br/>
+
 ## Rate-Limit by Packet Size
 There is a commented set of rules in the script which rate-limits connections which send too much data in a short period of time. <br/>
 I haven't done enough testing with this to find good rate-limiting, and this is completely unnecessary currently. <br/>
@@ -82,10 +96,6 @@ If you want to add that to your firewall, you have to learn about packet fragmen
 ## OUTPUT Restrictions
 This script doesn't have any rules for outbound connections, which you can add as well to further protect your system. <br/>
 But that would effectively only restrict yourself in what actions you can do on the system, it wouldn't directly protect you from DDoS attacks. <br/>
-
-## Whitelist IPs Using ipset
-You can have a system which whitelists specific IP addresses, and only those would be allowed to connect to the game server. <br/>
-This repository has an additional script `ipset.sh` which explains how to do something like that efficiently.
 
 ## OVH Edge Network Firewall
 If you are an OVH customer, you can add some rules to your server which will filter packets before they even reach your server. <br/>
