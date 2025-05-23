@@ -3,6 +3,11 @@
 Firstly, I do not claim to be good at firewalls, DDoS protection or networking in general. <br/>
 But I wrote a decent set of rules which worked for DoM.
 
+## Files:
+`firewall.sh` contains iptables rules for blocking common attacks and rate-limiting game ports. <br/>
+`ipset_example.sh` contains an example usage of an ipset, how to create one and how to add ips to it. <br/>
+`LoginExample.cs` contains appEngine code for the login request, which has been modified to whitelist IPs and remove unused IPs. <br/>
+
 ## Prerequisites:
 * Know how to navigate your server source
 * Know how packets work on your server
